@@ -2,22 +2,34 @@
 
 //--------------------------------------------------------------
 void testApp::setup(){
-
+	ofSetFrameRate(30);
 }
 
 //--------------------------------------------------------------
 void testApp::update(){
-
+	//nothing to do in update
+	points.push_back(ofPoint(ofRandomWidth(), ofRandomHeight()));
 }
 
 //--------------------------------------------------------------
 void testApp::draw(){
-
+	//set the background to white
+	
+	ofBackground(255);
+	//let's go through the points and draw 
+	
+	ofSetColor(255, 0, 0);
+	ofNoFill();
+	ofBeginShape();
+	for(int i = 0; i < points.size(); i++){
+		ofVertex(points[i]);
+	}
+	ofEndShape(false);
 }
 
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
-
+	
 }
 
 //--------------------------------------------------------------
@@ -42,7 +54,9 @@ void testApp::mousePressed(int x, int y, int button){
 
 //--------------------------------------------------------------
 void testApp::mouseReleased(int x, int y, int button){
-
+	ofPoint p;
+	p = ofPoint(x,y);
+	points.push_back(p);
 }
 
 //--------------------------------------------------------------

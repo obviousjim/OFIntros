@@ -2,17 +2,37 @@
 
 //--------------------------------------------------------------
 void testApp::setup(){
-
+    
+    //load the image object
+    myImage.loadImage("myImage.jpg");
+    
+    //get the pixels from the image
+    unsigned char* pixels = myImage.getPixels();
+    
+    //let's manipulate the pixels by iterating through them
+    
+    //we could put stripes on the image
+    
+    //OR
+    
+    //or delete all the pixels that are more than 50% red
+    
+    //after we're done we need to put the pixels back into the image so they changes show up
+    myImage.setFromPixels(pixels, myImage.getWidth(), myImage.getHeight(), myImage.getPixelsRef().getImageType());
+    
 }
 
 //--------------------------------------------------------------
 void testApp::update(){
-
+    //no need to use this
 }
 
 //--------------------------------------------------------------
 void testApp::draw(){
-
+    
+    //draw the image every frame, the changes you made in setup() will be there
+    myImage.draw(0,0);
+    
 }
 
 //--------------------------------------------------------------
