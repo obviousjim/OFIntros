@@ -4,19 +4,41 @@
 void testApp::setup(){
     
     //load the image object
-    myImage.loadImage("myImage.jpg");
+    myImage.loadImage("myImage.png");
     
     //get the pixels from the image
     unsigned char* pixels = myImage.getPixels();
     
     //let's manipulate the pixels by iterating through them
-    
+	
     //we could put stripes on the image
-    
+	/*
+    for(int y = 0; y < myImage.getHeight(); y++){
+		for(int x = 0; x < myImage.getWidth(); x++){
+			int index = (y*myImage.getWidth()+x)*4;
+			if( (x % 10) > 5){
+				pixels[index+0] = 0;
+				pixels[index+1] = 0;
+				pixels[index+2] = 0;
+				pixels[index+3] = 0;
+			}
+		}
+	}
+	*/
     //OR
-    
-    //or delete all the pixels that are more than 50% red
-    
+    //or delete all the pixels that are more than 50% blue
+    for(int y = 0; y < myImage.getHeight(); y++){
+		for(int x = 0; x < myImage.getWidth(); x++){
+			int index = (y*myImage.getWidth()+x)*4;
+			if(pixels[index+2] >= 128){
+				pixels[index+0] = 0;
+				pixels[index+1] = 0;
+				pixels[index+2] = 0;				
+				pixels[index+3] = 0;				
+			}
+		}
+	}
+	
     //after we're done we need to put the pixels back into the image so they changes show up
     myImage.setFromPixels(pixels, myImage.getWidth(), myImage.getHeight(), myImage.getPixelsRef().getImageType());
     

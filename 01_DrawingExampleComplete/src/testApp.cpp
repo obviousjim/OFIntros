@@ -8,7 +8,8 @@ void testApp::setup(){
 //--------------------------------------------------------------
 void testApp::update(){
 	//nothing to do in update
-	points.push_back(ofPoint(ofRandomWidth(), ofRandomHeight()));
+	//points.push_back(ofPoint(ofRandomWidth(), ofRandomHeight()));
+	
 }
 
 //--------------------------------------------------------------
