@@ -12,7 +12,7 @@ void testApp::setup(){
 	
 	// load font to display incoming message
 	
-	font.loadFont("futura_book.otf", 20);
+	font.loadFont("futura_book.otf", 30);
 	
 	ofBackground( 0 );
 }
@@ -39,12 +39,9 @@ void testApp::update(){
 			
 			if ( m.getNumArgs() > 0 ){
 				if ( m.getArgType(0) == OFXOSC_TYPE_STRING){
-					typing = m.getArgAsString(0);
 					
-					// let's use a new random color
-					color.r = ofRandom( 0, 255 );
-					color.g = ofRandom( 0, 255 );
-					color.b = ofRandom( 0, 255 );
+					string oldTyping = typing;
+					typing = m.getArgAsString(0) +"\n"+oldTyping;
 				}
 			}
 		}
@@ -58,8 +55,7 @@ void testApp::update(){
 
 //--------------------------------------------------------------
 void testApp::draw(){
-	ofSetColor(color);
-	font.drawString( typing, 20, 30 );
+	font.drawString( typing, 20, 50 );
 }
 
 //--------------------------------------------------------------

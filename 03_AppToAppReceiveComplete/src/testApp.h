@@ -43,5 +43,4 @@ class testApp : public ofBaseApp{
 		int					port;
 	
 		string				typing;		//typing you've received from another app
-		ofColor				color;		// change the color each time we get a new message
 };
