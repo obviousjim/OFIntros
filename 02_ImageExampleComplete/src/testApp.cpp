@@ -4,7 +4,7 @@
 void testApp::setup(){
     
     //load the image object
-    myImage.loadImage("myImage.png");
+    myImage.loadImage("myImage.jpg");
     
     //get the pixels from the image
     unsigned char* pixels = myImage.getPixels();
@@ -34,11 +34,11 @@ void testApp::setup(){
 	*/
 	
     //OR
-    //or delete all the pixels that are more than 50% blue
+    //or a rough bluescreen
     for(int y = 0; y < myImage.getHeight(); y++){
 		for(int x = 0; x < myImage.getWidth(); x++){
 			int index = (y*myImage.getWidth()+x)*bytesPerPixels;
-			if(pixels[index+2] >= 128){
+			if(pixels[index] < 80 && pixels[index+1] < 80 && pixels[index+2] > 80){
 				pixels[index+0] = 0;
 				pixels[index+1] = 0;
 				pixels[index+2] = 0;				
