@@ -1,0 +1,17 @@
+//////////////////////////////////////////////
+Introductory openFrameworks Workshop materials
+//////////////////////////////////////////////
+
+by Brett Renfer, James George and Chris Allick
+
+Example 1:
+Simple drawing app.  This app draws lines between every point you click 
+
+Example 2:
+Image manipulation: Shows how to draw an image, manipulate pixels, and save changes to disk
+
+Example 3:
+App to App communication. Shows how to create a simple bulletin board on our local network
+
+Example 4:
+Face Decection. Shows how to find a face in a webcam.
