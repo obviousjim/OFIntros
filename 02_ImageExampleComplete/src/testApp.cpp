@@ -9,32 +9,41 @@ void testApp::setup(){
     //get the pixels from the image
     unsigned char* pixels = myImage.getPixels();
     
-    //let's manipulate the pixels by iterating through them
+	int bytesPerPixels = 3;
+	if(myImage.getPixelsRef().getImageType() == OF_IMAGE_COLOR_ALPHA){
+		bytesPerPixels = 4;
+	}
 	
+    //let's manipulate the pixels by iterating through them
     //we could put stripes on the image
 	/*
     for(int y = 0; y < myImage.getHeight(); y++){
 		for(int x = 0; x < myImage.getWidth(); x++){
-			int index = (y*myImage.getWidth()+x)*4;
+			int index = (y*myImage.getWidth()+x)*bytesPerPixels;
 			if( (x % 10) > 5){
 				pixels[index+0] = 0;
 				pixels[index+1] = 0;
 				pixels[index+2] = 0;
-				pixels[index+3] = 0;
+				if(bytesPerPixels == 4){
+					pixels[index+3] = 0;
+				}
 			}
 		}
 	}
 	*/
+	
     //OR
     //or delete all the pixels that are more than 50% blue
     for(int y = 0; y < myImage.getHeight(); y++){
 		for(int x = 0; x < myImage.getWidth(); x++){
-			int index = (y*myImage.getWidth()+x)*4;
+			int index = (y*myImage.getWidth()+x)*bytesPerPixels;
 			if(pixels[index+2] >= 128){
 				pixels[index+0] = 0;
 				pixels[index+1] = 0;
 				pixels[index+2] = 0;				
-				pixels[index+3] = 0;				
+				if(bytesPerPixels == 4){
+					pixels[index+3] = 0;				
+				}
 			}
 		}
 	}
