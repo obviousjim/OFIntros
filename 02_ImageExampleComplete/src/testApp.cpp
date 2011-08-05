@@ -69,7 +69,9 @@ void testApp::draw(){
 
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
-
+	if(key == 's'){
+		myImage.saveImage("myImageSaved.png");
+	}
 }
 
 //--------------------------------------------------------------
