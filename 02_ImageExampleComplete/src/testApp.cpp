@@ -8,7 +8,8 @@ void testApp::setup(){
     
     //get the pixels from the image
     unsigned char* pixels = myImage.getPixels();
-    
+
+    //some images have alpha
 	int bytesPerPixels = 3;
 	if(myImage.getPixelsRef().getImageType() == OF_IMAGE_COLOR_ALPHA){
 		bytesPerPixels = 4;
@@ -20,7 +21,7 @@ void testApp::setup(){
     for(int y = 0; y < myImage.getHeight(); y++){
 		for(int x = 0; x < myImage.getWidth(); x++){
 			int index = (y*myImage.getWidth()+x)*bytesPerPixels;
-			if( (x % 10) > 5){
+			if( (x % 10) > 5){ //how would you make verticle
 				pixels[index+0] = 0;
 				pixels[index+1] = 0;
 				pixels[index+2] = 0;
@@ -48,7 +49,7 @@ void testApp::setup(){
 		}
 	}
 	
-    //after we're done we need to put the pixels back into the image so they changes show up
+    //after we're done we need to put the pixels back into the image so the changes show up
     myImage.setFromPixels(pixels, myImage.getWidth(), myImage.getHeight(), myImage.getPixelsRef().getImageType());
     
 }
