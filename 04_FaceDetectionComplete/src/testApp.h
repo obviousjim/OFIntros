@@ -3,6 +3,15 @@
 #include "ofMain.h"
 #include "ofxCvHaarFinder.h"
 
+/***************************************************************
+ 
+ Face detection
+ - this app demonstrates how to use OpenCV to find haar-like features	
+ (http://en.wikipedia.org/wiki/Haar-like_features)
+ - includes file for detecting faces
+ 
+ ***************************************************************/
+
 class testApp : public ofBaseApp{
 	public:
 		void setup();
@@ -19,6 +28,6 @@ class testApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);		
 
-		ofVideoGrabber grabber;
-		ofxCvHaarFinder finder;
+		ofVideoGrabber grabber;  // how OF gets camera input
+		ofxCvHaarFinder finder;	 // object used to detect haar features
 };
