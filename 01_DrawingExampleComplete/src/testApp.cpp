@@ -3,18 +3,20 @@
 //--------------------------------------------------------------
 void testApp::setup(){
 	ofSetFrameRate(30);
+	
+	//set the background to white
+	// in OF, you only have to do this once unless you call ofSetBackgroundAuto(false);
+	ofBackground(255);
 }
 
 //--------------------------------------------------------------
 void testApp::update(){
+	// uncomment this to add random points!
 	//points.push_back(ofPoint(ofRandomWidth(), ofRandomHeight()));
 }
 
 //--------------------------------------------------------------
 void testApp::draw(){
-	//set the background to white
-	
-	ofBackground(255);
 	//let's go through the points and draw 
 	
 	//set the current color to red
@@ -46,7 +48,12 @@ void testApp::keyReleased(int key){
 
 //--------------------------------------------------------------
 void testApp::mouseMoved(int x, int y ){
-
+	// uncomment this to add a point every time you move your mouse
+	
+	//create a point and add it to the end of the array
+	//ofPoint p;
+	//p = ofPoint(x,y);
+	//points.push_back(p);
 }
 
 //--------------------------------------------------------------
