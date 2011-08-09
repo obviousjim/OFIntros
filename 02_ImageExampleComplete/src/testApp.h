@@ -2,6 +2,14 @@
 
 #include "ofMain.h"
 
+/***************************************************************
+ 
+ Image example
+ - this app demonstrates how to load an image and manipilate 
+   its pixels
+ 
+ ***************************************************************/
+
 class testApp : public ofBaseApp{
 
   public:
@@ -19,6 +27,8 @@ class testApp : public ofBaseApp{
     void dragEvent(ofDragInfo dragInfo);
     void gotMessage(ofMessage msg);
 
+	// ofImage: how OF loads + displays images
+	
     ofImage myImage;
     
 };
