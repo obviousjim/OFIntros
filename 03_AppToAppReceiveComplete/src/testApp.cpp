@@ -3,17 +3,16 @@
 //--------------------------------------------------------------
 void testApp::setup(){
 	
-	//listen for incoming messages on a port
-	// setup receiver with usage:
+	//listen for incoming messages on a port; setup OSC receiver with usage:
 	//		receiver.setup( int port );
 	
 	port = 9000;
 	receiver.setup( port );
 	
 	// load font to display incoming message
-	
 	font.loadFont("futura_book.otf", 30);
 	
+	// set bg to black!
 	ofBackground( 0 );
 }
 
@@ -49,6 +48,8 @@ void testApp::update(){
 		// handle getting random OSC messages here
 		else
 		{
+			ofSetLogLevel( OF_LOG_VERBOSE ); // need this to catch ofLogVerbose messages
+			ofLogVerbose( "got weird message: " + m.getAddress() );
 		}
 	}
 }

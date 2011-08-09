@@ -4,6 +4,7 @@
 #include "ofxOsc.h"
 
 /***************************************************************
+ 
  AppToAppReceivingExample
  - this app demonstrates using the ofxOsc addon
  - use with AppToAppSending example to send keyboard
@@ -38,9 +39,9 @@ class testApp : public ofBaseApp{
 
 		// AppToAppReceiving methods
 	
-		ofTrueTypeFont		font;
-		ofxOscReceiver		receiver;
-		int					port;
+		ofTrueTypeFont		font;		// font to draw incoming messages
+		ofxOscReceiver		receiver;	// OSC receiver
+		int					port;		// port we're listening on: must match port from sender!
 	
 		string				typing;		//typing you've received from another app
 };
