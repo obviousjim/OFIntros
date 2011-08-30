@@ -2,10 +2,11 @@
 
 //--------------------------------------------------------------
 void testApp::setup(){
-    
+	
+    unsigned char* pixels;    
     //load the image object
     myImage.loadImage("myImage.jpg");
-    
+
     //get the pixels from the image
     //#1
 

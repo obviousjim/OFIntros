@@ -4,7 +4,8 @@
 void testApp::setup(){
 
 	//set up the face finder.  this .xml file describes what faces look like to the finder
-	finder.setup("haarcascade_frontalface_default.xml");
+	//uncomment once the ofxOpenCV addon is added to the project
+	//finder.setup("haarcascade_frontalface_default.xml");
 	
 	//initialize the video grabber
 	grabber.initGrabber(320, 240);

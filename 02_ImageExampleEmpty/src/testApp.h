@@ -28,7 +28,6 @@ class testApp : public ofBaseApp{
     void gotMessage(ofMessage msg);
 
 	// ofImage: how OF loads + displays images
-	
     ofImage myImage;
     
 };

@@ -1,7 +1,7 @@
 #pragma once
 
 #include "ofMain.h"
-#include "ofxOsc.h"
+//#include "ofxOsc.h"
 
 /***************************************************************
 	AppToAppSendingExample
@@ -51,7 +51,7 @@ class testApp : public ofBaseApp{
 		
 		// OSC Sending vars
 	
-		ofxOscSender		sender;		// all-important ofxOscSender variable
+		//TODO: add in the all-important ofxOscSender variable
 		string				host;		// IP we're sending to (see above)
 		int					port;		// port we're sending to
 		string				typing;		// what we're going to send: some stuff you typed

@@ -31,5 +31,5 @@ class testApp : public ofBaseApp{
 	// vector: (similar to ArrayList in Processing and arrays in ActionScript)
 	// set of stored points to draw to the screen
 	
-	vector<ofPoint> points;
+	//TODO: Add a place to store all the points
 };

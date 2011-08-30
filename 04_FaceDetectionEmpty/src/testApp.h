@@ -1,7 +1,7 @@
 #pragma once
 
 #include "ofMain.h"
-#include "ofxCvHaarFinder.h"
+//#include "ofxCvHaarFinder.h"
 
 /***************************************************************
  
@@ -29,5 +29,6 @@ class testApp : public ofBaseApp{
 		void gotMessage(ofMessage msg);		
 
 		ofVideoGrabber grabber;  // how OF gets camera input
-		ofxCvHaarFinder finder;	 // object used to detect haar features
+	//uncomment this once you've added the ofxOpenCV addon
+//		ofxCvHaarFinder finder;	 // object used to detect haar features
 };

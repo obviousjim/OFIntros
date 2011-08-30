@@ -21,7 +21,8 @@ void testApp::setup(){
 	host	= "localhost";
 	port	= 9000;
 	
-	sender.setup( host, port );
+//	uncomment this line once you've added the addon
+//	sender.setup( host, port );
 	
 	/*
 		Load font to display instructions + what you've typed
