@@ -17,9 +17,7 @@ void testApp::update(){
 	grabber.update();
 	
 	//if we have a new frame, look for faces in it
-	if(grabber.isFrameNew()){
-		finder.findHaarObjects(grabber.getPixelsRef());
-	}
+    //#1
 }
 
 //--------------------------------------------------------------
@@ -32,10 +30,10 @@ void testApp::draw(){
 	ofNoFill();
 	
 	//for each face "blob" we found, draw a rectangle around the face
-	for(int i = 0; i < finder.blobs.size(); i++) {
-		ofRectangle cur = finder.blobs[i].boundingRect;
-		ofRect(cur.x, cur.y, cur.width, cur.height);
-	}
+    //#2
+    
+    //challenege #1
+    //put a smiley face :)
 }
 
 //--------------------------------------------------------------

@@ -76,10 +76,7 @@ void testApp::keyPressed  (int key){
 		// to send a string, create an ofxOscMessage object, give it an address
 		// and add a string agrument to the object
 		
-		ofxOscMessage m;
-		m.setAddress( "/typing" );
-		m.addStringArg( typing );
-		sender.sendMessage( m );
+        //#1
 		
 		// clear out "typing"
 		typing = "";
