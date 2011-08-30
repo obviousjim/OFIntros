@@ -21,7 +21,10 @@ void testApp::setup(){
     for(int y = 0; y < myImage.getHeight(); y++){
 		for(int x = 0; x < myImage.getWidth(); x++){
 			int index = (y*myImage.getWidth()+x)*bytesPerPixels;
-			if( (x % 10) > 5){ //how would you make verticle
+            // % = modulo (http://en.wikipedia.org/wiki/Modulo_operation)
+            // works like: num1 % num2 = remainder of num1 divided by num2
+            // e.g. 4 % 2 = 0; 10 % 11 = 1
+			if( (x % 10) > 5){ //how would you make vertical
 				pixels[index+0] = 0;
 				pixels[index+1] = 0;
 				pixels[index+2] = 0;
@@ -32,29 +35,9 @@ void testApp::setup(){
 		}
 	}
 	*/
-	
-    //OR
-    //or a rough bluescreen
-    for(int y = 0; y < myImage.getHeight(); y++){
-		for(int x = 0; x < myImage.getWidth(); x++){
-			int index = (y*myImage.getWidth()+x)*bytesPerPixels;
-			
-			// check the blue value ( pixels[index+2])
-			
-			if(pixels[index] < 80 && pixels[index+1] < 80 && pixels[index+2] > 80){
-				pixels[index+0] = 0;	//  r
-				pixels[index+1] = 0;	//  g
-				pixels[index+2] = 0;	//  b
-				if(bytesPerPixels == 4){ 
-					pixels[index+3] = 0; // a				
-				}
-			}
-		}
-	}
-	
 	// OR
 	// create an image from some pixels
-	/*
+	
 	int width	= 640;
 	int height	= 480;
 	
@@ -71,7 +54,7 @@ void testApp::setup(){
 	}
 	myImage.setFromPixels(generativePixels, width, height, OF_IMAGE_COLOR);
 	 
-	*/
+	
     //after we're done we need to put the pixels back into the image so the changes show up
     myImage.setFromPixels(pixels, myImage.getWidth(), myImage.getHeight(), myImage.getPixelsRef().getImageType());
 }
