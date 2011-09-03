@@ -4,9 +4,9 @@
 void testApp::setup(){
 	ofSetFrameRate(30);
 	
-    //set the background to white
-    // in OF, you only have to do this once unless you call ofSetBackgroundAuto(false);
-    //#1
+	//set the background to white
+	// in OF, you only have to do this once unless you call ofSetBackgroundAuto(false);
+	ofBackground(255);
 }
 
 //--------------------------------------------------------------
@@ -20,19 +20,19 @@ void testApp::draw(){
     //let's go through the points and draw 
 
     //set the current color to red
-    //#2
+    //#1
 
     //make sure you don't make solid shapes, just outlines
-    //#3
+    //#2
     
     //start making a path
-    //#4
+    //#3
 	
     //add a vertex for every mouse click that we've seen
-    //#5
+    //#4
 	
     //finish the path, the false means don't close the loop.
-    //#6
+    //#5
 }
 
 //--------------------------------------------------------------

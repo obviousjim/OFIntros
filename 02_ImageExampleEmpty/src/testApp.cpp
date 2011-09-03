@@ -3,9 +3,11 @@
 //--------------------------------------------------------------
 void testApp::setup(){
 	
-    unsigned char* pixels;    
     //load the image object
     myImage.loadImage("myImage.jpg");
+
+	//declare a variable for modifying pixels
+	unsigned char* pixels;    
 
     //get the pixels from the image
     //#1
@@ -14,15 +16,15 @@ void testApp::setup(){
     //#2
 	
     //let's manipulate the pixels by iterating through them
-    //we could put stripes on the image
+    //to make a rough 'bluescreen'
     //#3
 	
     //OR
-    //or a rough bluescreen
     //challenge #1
+	// try to make some stripes in the image
 	
 	// OR
-	// create an image from some pixels
+	// generate a new image from scratch!
     //challenge #2
     
     //after we're done we need to put the pixels back into the image so the changes show up
