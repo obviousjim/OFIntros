@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="03_AppToAppSendEmpty" />
+		<Option makefile_is_custom="1" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Option virtualFolders="addons/;src/;build config/;addons/ofxOsc/;addons/ofxOsc/libs/;addons/ofxOsc/libs/oscpack/;addons/ofxOsc/libs/oscpack/include/;addons/ofxOsc/libs/oscpack/include/ip/;addons/ofxOsc/libs/oscpack/include/osc/;" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/$(PROJECT_NAME)_debug" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="bin" />
+				<Option object_output="obj/Debug/" />
+				<Option external_deps="../../../libs/openFrameworksCompiled/lib/linux/libopenFrameworksDebug.a;" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Option projectLinkerOptionsRelation="2" />
+			</Target>
+			<Target title="Release">
+				<Option output="bin/$(PROJECT_NAME)" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="bin" />
+				<Option object_output="obj/Release/" />
+				<Option external_deps="../../../libs/openFrameworksCompiled/lib/linux/libopenFrameworks.a;" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Option projectLinkerOptionsRelation="2" />
+			</Target>
+		</Build>
+		<Unit filename="../../../addons/ofxOsc/libs/oscpack/include/ip/IpEndpointName.h">
+			<Option virtualFolder="addons/ofxOsc/libs/oscpack/include/ip/" />
+		</Unit>
+		<Unit filename="../../../addons/ofxOsc/libs/oscpack/include/ip/NetworkingUtils.h">
+			<Option virtualFolder="addons/ofxOsc/libs/oscpack/include/ip/" />
+		</Unit>
+		<Unit filename="../../../addons/ofxOsc/libs/oscpack/include/ip/PacketListener.h">
+			<Option virtualFolder="addons/ofxOsc/libs/oscpack/include/ip/" />
+		</Unit>
+		<Unit filename="../../../addons/ofxOsc/libs/oscpack/include/ip/TimerListener.h">
+			<Option virtualFolder="addons/ofxOsc/libs/oscpack/include/ip/" />
+		</Unit>
+		<Unit filename="../../../addons/ofxOsc/libs/oscpack/include/ip/UdpSocket.h">
+			<Option virtualFolder="addons/ofxOsc/libs/oscpack/include/ip/" />
+		</Unit>
+		<Unit filename="../../../addons/ofxOsc/libs/oscpack/include/osc/MessageMappingOscPacketListener.h">
+			<Option virtualFolder="addons/ofxOsc/libs/oscpack/include/osc/" />
+		</Unit>
+		<Unit filename="../../../addons/ofxOsc/libs/oscpack/include/osc/OscException.h">
+			<Option virtualFolder="addons/ofxOsc/libs/oscpack/include/osc/" />
+		</Unit>
+		<Unit filename="../../../addons/ofxOsc/libs/oscpack/include/osc/OscHostEndianness.h">
+			<Option virtualFolder="addons/ofxOsc/libs/oscpack/include/osc/" />
+		</Unit>
+		<Unit filename="../../../addons/ofxOsc/libs/oscpack/include/osc/OscOutboundPacketStream.h">
+			<Option virtualFolder="addons/ofxOsc/libs/oscpack/include/osc/" />
+		</Unit>
+		<Unit filename="../../../addons/ofxOsc/libs/oscpack/include/osc/OscPacketListener.h">
+			<Option virtualFolder="addons/ofxOsc/libs/oscpack/include/osc/" />
+		</Unit>
+		<Unit filename="../../../addons/ofxOsc/libs/oscpack/include/osc/OscPrintReceivedElements.h">
+			<Option virtualFolder="addons/ofxOsc/libs/oscpack/include/osc/" />
+		</Unit>
+		<Unit filename="../../../addons/ofxOsc/libs/oscpack/include/osc/OscReceivedElements.h">
+			<Option virtualFolder="addons/ofxOsc/libs/oscpack/include/osc/" />
+		</Unit>
+		<Unit filename="../../../addons/ofxOsc/libs/oscpack/include/osc/OscTypes.h">
+			<Option virtualFolder="addons/ofxOsc/libs/oscpack/include/osc/" />
+		</Unit>
+		<Unit filename="../../../addons/ofxOsc/src/ofxOsc.h">
+			<Option virtualFolder="addons/ofxOsc/" />
+		</Unit>
+		<Unit filename="../../../addons/ofxOsc/src/ofxOscArg.h">
+			<Option virtualFolder="addons/ofxOsc/" />
+		</Unit>
+		<Unit filename="../../../addons/ofxOsc/src/ofxOscBundle.cpp">
+			<Option virtualFolder="addons/ofxOsc/" />
+		</Unit>
+		<Unit filename="../../../addons/ofxOsc/src/ofxOscBundle.h">
+			<Option virtualFolder="addons/ofxOsc/" />
+		</Unit>
+		<Unit filename="../../../addons/ofxOsc/src/ofxOscMessage.cpp">
+			<Option virtualFolder="addons/ofxOsc/" />
+		</Unit>
+		<Unit filename="../../../addons/ofxOsc/src/ofxOscMessage.h">
+			<Option virtualFolder="addons/ofxOsc/" />
+		</Unit>
+		<Unit filename="../../../addons/ofxOsc/src/ofxOscReceiver.cpp">
+			<Option virtualFolder="addons/ofxOsc/" />
+		</Unit>
+		<Unit filename="../../../addons/ofxOsc/src/ofxOscReceiver.h">
+			<Option virtualFolder="addons/ofxOsc/" />
+		</Unit>
+		<Unit filename="../../../addons/ofxOsc/src/ofxOscSender.cpp">
+			<Option virtualFolder="addons/ofxOsc/" />
+		</Unit>
+		<Unit filename="../../../addons/ofxOsc/src/ofxOscSender.h">
+			<Option virtualFolder="addons/ofxOsc/" />
+		</Unit>
+		<Unit filename="addons.make">
+			<Option virtualFolder="build config/" />
+		</Unit>
+		<Unit filename="config.make">
+			<Option virtualFolder="build config" />
+		</Unit>
+		<Unit filename="src/main.cpp">
+			<Option virtualFolder="src/" />
+		</Unit>
+		<Unit filename="src/testApp.cpp">
+			<Option virtualFolder="src/" />
+		</Unit>
+		<Unit filename="src/testApp.h">
+			<Option virtualFolder="src/" />
+		</Unit>
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
