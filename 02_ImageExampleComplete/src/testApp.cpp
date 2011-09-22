@@ -8,14 +8,26 @@ void testApp::setup(){
     
     //get the pixels from the image
     unsigned char* pixels = myImage.getPixels();
-
-    //some images have alpha
-	int bytesPerPixels = 3;
-	if(myImage.getPixelsRef().getImageType() == OF_IMAGE_COLOR_ALPHA){
-		bytesPerPixels = 4;
+	
+	//let's manipulate the pixels by iterating through them
+    //or a rough bluescreen
+    for(int y = 0; y < myImage.getHeight(); y++){
+		for(int x = 0; x < myImage.getWidth(); x++){
+			int index = (y*myImage.getWidth()+x)*3;
+			
+			// check the blue value ( pixels[index+2])
+			int r = pixels[index];
+			int g = pixels[index+1];
+			int b = pixels[index+2];
+			if(b > g+r){
+				pixels[index+0] = 0;	//  r
+				pixels[index+1] = 0;	//  g
+				pixels[index+2] = 0;	//  b
+			}
+		}
 	}
 	
-    //let's manipulate the pixels by iterating through them
+	//OR
     //we could put stripes on the image
 	/*
     for(int y = 0; y < myImage.getHeight(); y++){
@@ -34,25 +46,6 @@ void testApp::setup(){
 			}
 		}
 	}*/
-
-    //OR
-    //or a rough bluescreen
-    for(int y = 0; y < myImage.getHeight(); y++){
-		for(int x = 0; x < myImage.getWidth(); x++){
-			int index = (y*myImage.getWidth()+x)*bytesPerPixels;
-			
-			// check the blue value ( pixels[index+2])
-			
-			if(pixels[index] < 80 && pixels[index+1] < 80 && pixels[index+2] > 80){
-				pixels[index+0] = 0;	//  r
-				pixels[index+1] = 0;	//  g
-				pixels[index+2] = 0;	//  b
-				if(bytesPerPixels == 4){ 
-					pixels[index+3] = 0; // a				
-				}
-			}
-		}
-	}
     
 	// OR
 	// create an image from some pixels

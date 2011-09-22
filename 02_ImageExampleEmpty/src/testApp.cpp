@@ -11,13 +11,10 @@ void testApp::setup(){
 
     //get the pixels from the image
     //#1
-
-    //some images have alpha
-    //#2
 	
     //let's manipulate the pixels by iterating through them
     //to make a rough 'bluescreen'
-    //#3
+    //#2
 	
     //OR
     //challenge #1
