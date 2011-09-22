@@ -47,12 +47,12 @@ class testApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);		
 	
-		// AppToAppSending vars
+		// AppToAppSending variables
 		
-		// OSC Sending vars
+		// OSC Sending variables
 	
-		ofxOscSender		sender;		// all-important ofxOscSender variable
-		string				host;		// IP we're sending to (see above)
+		ofxOscSender		sender;		// all-important ofxOscSender object
+		string				host;		// IP address we're sending to (see above)
 		int					port;		// port we're sending to
 		string				typing;		// what we're going to send: some stuff you typed
 	

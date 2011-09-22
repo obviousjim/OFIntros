@@ -41,7 +41,7 @@ void testApp::update(){
 //--------------------------------------------------------------
 void testApp::draw(){
 	
-	// draw some debug data + instructions to the screen the screen with the font you loaded
+	// draw some debug data + instructions to the screen with the font you loaded
 	
 	string debug			= "sending osc messages to " + string( host ) +" on port "+ ofToString( port );
 	string instructions		= "type to create a new message. hit RETURN to send!";
@@ -74,7 +74,7 @@ void testApp::keyPressed  (int key){
 	else {
 		
 		// to send a string, create an ofxOscMessage object, give it an address
-		// and add a string agrument to the object
+		// and add a string argument to the object
 		
 		ofxOscMessage m;
 		m.setAddress( "/typing" );
