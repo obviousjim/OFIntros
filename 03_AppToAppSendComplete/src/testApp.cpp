@@ -34,10 +34,39 @@ void testApp::setup(){
 
 	debugfont.loadFont("futura_book.otf", 12);
 	giantFont.loadFont("futura_book.otf", 20);
+
+	//Bonus stage material:
+	recvPort = port+1;
+	receiver.setup(recvPort);
 }
 
 //--------------------------------------------------------------
 void testApp::update(){
+
+    //Bonus stage material:
+	// OSC receiver queues up new messages, so you need to iterate
+	// through waiting messages to get each incoming message
+
+	// check for waiting messages
+
+	while( receiver.hasWaitingMessages() )
+	{
+		// get the next message
+		ofxOscMessage m;
+		receiver.getNextMessage( &m );
+
+		// check the address of the incoming message
+		if ( m.getAddress() == "/typing" )
+		{
+			// get the first argument (we're only sending one) as a string
+			if ( m.getNumArgs() > 0 ){
+				if ( m.getArgType(0) == OFXOSC_TYPE_STRING){
+					string oldMessages = messages;
+					messages = m.getArgAsString(0) +"\n"+oldMessages;
+				}
+			}
+		}
+	}
 
 }
 
@@ -53,8 +82,10 @@ void testApp::draw(){
 	debugfont.drawString( instructions, 20, 40);
 
 	// what have we typed so far?
-
 	giantFont.drawString( typing, 20, 80);
+
+	//Bonus stage material:
+	debugfont.drawString(messages, 20, 100);
 }
 
 //--------------------------------------------------------------

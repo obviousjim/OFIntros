@@ -14,12 +14,11 @@ void testApp::setup(){
 	font.loadFont("futura_book.otf", 30);
 	titleFont.loadFont("futura_book.otf", 35);
 
-//	ofSetLogLevel( OF_LOG_VERBOSE );
+	ofSetLogLevel( OF_LOG_VERBOSE );
 
 	// set bg to black!
 	ofBackground( 0 );
 
-	//Bonus stage material
 	maxmessages=15;
 }
 
@@ -36,6 +35,8 @@ void testApp::update(){
 		// get the next message
 		ofxOscMessage m;
 		receiver.getNextMessage( &m );
+        //Log received message for easier debugging of participants' messages:
+        ofLogVerbose("REcvd msg " + getOscMsgAsString(m) + " from " + m.getRemoteIp());
 
 		// check the address of the incoming message
 		if ( m.getAddress() == "/typing" )
@@ -43,26 +44,29 @@ void testApp::update(){
 		    //Bonus stage material:
 		    //Identify host of incoming msg
 		    string incomingHost = m.getRemoteIp();
-		    //See if incoming host is already known:
+		    //See if incoming host is a new one:
             if ( std::find(knownhosts.begin(),knownhosts.end(),incomingHost) == knownhosts.end() ){
                 knownhosts.push_back(incomingHost); //add new host to list
             }
 
 			// get the first argument (we're only sending one) as a string
 			if ( m.getNumArgs() > 0 ){
+
 				if ( m.getArgType(0) == OFXOSC_TYPE_STRING){
-//					string oldTyping = typing;
-//					typing = m.getArgAsString(0) +"\n"+oldTyping;
-
-                    //Bonus stage material:
+                    //reimplemented message display:
                     //If vector has reached max size, delete the first/oldest element
-                    if ( messages.size() == maxmessages ) messages.erase( messages.begin() );
-
+                    if ( messages.size() == maxmessages ){
+                        messages.erase( messages.begin() );
+                    }
                     //Add message text at the end of the vector
                     messages.push_back(m.getArgAsString(0));
+
+                    //Broadcast message to other chat participants
                     broadcastReceivedMessage(m);
 				}
+
 			}
+
 		}
 
 		// handle getting random OSC messages here
@@ -81,7 +85,7 @@ void testApp::draw(){
     string title = "Listening for OSC messages on port " + ofToString( port ) + "\nKnown hosts: " + ofToString(knownhosts.size());
     titleFont.drawString(title, 20, 35);
 
-    //Bonus stage material:
+    //reimplemented message display:
     typing="";
     // Concatenate a nice multiline string to display
     for (unsigned int i=0; i<messages.size(); i++){
@@ -142,6 +146,29 @@ void testApp::dragEvent(ofDragInfo dragInfo){
 
 }
 
+
+string testApp::getOscMsgAsString(ofxOscMessage m){
+	string msg_string;
+	msg_string = m.getAddress();
+	msg_string += ":";
+	for ( int i=0; i<m.getNumArgs(); i++ )
+	{
+		// get the argument type
+		msg_string += " " + m.getArgTypeName( i );
+		msg_string += ":";
+		// display the argument - make sure we get the right type
+		if( m.getArgType( i ) == OFXOSC_TYPE_INT32 )
+			msg_string += ofToString( m.getArgAsInt32( i ) );
+		else if( m.getArgType( i ) == OFXOSC_TYPE_FLOAT )
+			msg_string += ofToString( m.getArgAsFloat( i ) );
+		else if( m.getArgType( i ) == OFXOSC_TYPE_STRING )
+			msg_string += m.getArgAsString( i );
+		else
+			msg_string += "unknown";
+	}
+	return msg_string;
+}
+
 //Bonus stage material
 void testApp::broadcastReceivedMessage(ofxOscMessage m){
 
@@ -149,6 +176,8 @@ void testApp::broadcastReceivedMessage(ofxOscMessage m){
     // use another port for now to avoid localhost loop
     for (unsigned int i=0;i<knownhosts.size();i++){
             sender.setup(knownhosts[i],port+1);
+            m.setRemoteEndpoint(knownhosts[i],port+1);
             sender.sendMessage(m);
+//            ofLogVerbose("Broadcast message "+m.getArgAsString(0)+" to " + m.getRemoteIp()+":"+ofToString(m.getRemotePort()));
     }
 }
