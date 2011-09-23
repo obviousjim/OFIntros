@@ -45,4 +45,8 @@ class testApp : public ofBaseApp{
 		int					port;		// port we're listening on: must match port from sender!
 
 		string				typing;		//typing you've received from another app
+
+        //Bonus stage material
+		vector<string>      messages;   //vector containing the received messages for display
+		unsigned int                 maxmessages;//nr of messages fitting on the screen
 };

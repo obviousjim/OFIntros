@@ -17,6 +17,9 @@ void testApp::setup(){
 
 	// set bg to black!
 	ofBackground( 0 );
+
+	//Bonus stage material
+	maxmessages=5;
 }
 
 //--------------------------------------------------------------
@@ -40,8 +43,15 @@ void testApp::update(){
 			// get the first argument (we're only sending one) as a string
 			if ( m.getNumArgs() > 0 ){
 				if ( m.getArgType(0) == OFXOSC_TYPE_STRING){
-					string oldTyping = typing;
-					typing = m.getArgAsString(0) +"\n"+oldTyping;
+//					string oldTyping = typing;
+//					typing = m.getArgAsString(0) +"\n"+oldTyping;
+
+                    //Bonus stage material:
+                    //If vector has reached max size, delete the first/oldest element
+                    if ( messages.size() == maxmessages ) messages.erase( messages.begin() );
+
+                    //Add message text at the end of the vector
+                    messages.push_back(m.getArgAsString(0));
 				}
 			}
 		}
@@ -57,6 +67,16 @@ void testApp::update(){
 
 //--------------------------------------------------------------
 void testApp::draw(){
+
+
+    //Bonus stage material:
+    typing="";
+    // Concatenate a nice multiline string to display
+    for (unsigned int i=0; i<messages.size(); i++){
+        string oldTyping = typing;
+        typing = oldTyping + "\n" + messages[i];
+    }
+    //Display the messages
 	font.drawString( typing, 20, 50 );
 }
 
