@@ -12,6 +12,7 @@ void testApp::setup(){
 
 	// load font to display incoming message
 	font.loadFont("futura_book.otf", 30);
+	titleFont.loadFont("futura_book.otf", 40);
 
 //	ofSetLogLevel( OF_LOG_VERBOSE );
 
@@ -67,6 +68,11 @@ void testApp::update(){
 
 //--------------------------------------------------------------
 void testApp::draw(){
+
+    //Display some information
+    string title = "Listening for OSC messages on port " + ofToString( port );
+    titleFont.drawString("", 20, 20);
+
 
 
     //Bonus stage material:
