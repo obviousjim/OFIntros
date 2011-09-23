@@ -12,7 +12,7 @@ void testApp::setup(){
 
 	// load font to display incoming message
 	font.loadFont("futura_book.otf", 30);
-	titleFont.loadFont("futura_book.otf", 40);
+	titleFont.loadFont("futura_book.otf", 35);
 
 //	ofSetLogLevel( OF_LOG_VERBOSE );
 
@@ -20,7 +20,7 @@ void testApp::setup(){
 	ofBackground( 0 );
 
 	//Bonus stage material
-	maxmessages=5;
+	maxmessages=15;
 }
 
 //--------------------------------------------------------------
@@ -38,9 +38,16 @@ void testApp::update(){
 		receiver.getNextMessage( &m );
 
 		// check the address of the incoming message
-
 		if ( m.getAddress() == "/typing" )
 		{
+		    //Bonus stage material:
+		    //Identify host of incoming msg
+		    string incomingHost = m.getRemoteIp();
+		    //See if incoming host is already known:
+            if ( std::find(knownhosts.begin(),knownhosts.end(),incomingHost) == knownhosts.end() ){
+                knownhosts.push_back(incomingHost); //add new host to list
+            }
+
 			// get the first argument (we're only sending one) as a string
 			if ( m.getNumArgs() > 0 ){
 				if ( m.getArgType(0) == OFXOSC_TYPE_STRING){
@@ -53,6 +60,7 @@ void testApp::update(){
 
                     //Add message text at the end of the vector
                     messages.push_back(m.getArgAsString(0));
+                    broadcastReceivedMessage(m);
 				}
 			}
 		}
@@ -70,10 +78,8 @@ void testApp::update(){
 void testApp::draw(){
 
     //Display some information
-    string title = "Listening for OSC messages on port " + ofToString( port );
-    titleFont.drawString("", 20, 20);
-
-
+    string title = "Listening for OSC messages on port " + ofToString( port ) + "\nKnown hosts: " + ofToString(knownhosts.size());
+    titleFont.drawString(title, 20, 35);
 
     //Bonus stage material:
     typing="";
@@ -82,13 +88,14 @@ void testApp::draw(){
         string oldTyping = typing;
         typing = oldTyping + "\n" + messages[i];
     }
+
     //Display the messages
-	font.drawString( typing, 20, 50 );
+	font.drawString( typing, 20, 90 );
 }
 
 //--------------------------------------------------------------
 void testApp::keyPressed  (int key){
-    //this is purely workaround for this mysterious OSCpack bug.
+    //this is purely workaround for my mysterious OSCpack bug.
     // if there are problems, reinit the receiver
     // must be a timing problem, though - in debug, stepping through, it works.
     if ( key =='r' || key == 'R' ){
@@ -133,4 +140,15 @@ void testApp::gotMessage(ofMessage msg){
 //--------------------------------------------------------------
 void testApp::dragEvent(ofDragInfo dragInfo){
 
+}
+
+//Bonus stage material
+void testApp::broadcastReceivedMessage(ofxOscMessage m){
+
+    //Send message to all known hosts
+    // use another port for now to avoid localhost loop
+    for (unsigned int i=0;i<knownhosts.size();i++){
+            sender.setup(knownhosts[i],port+1);
+            sender.sendMessage(m);
+    }
 }

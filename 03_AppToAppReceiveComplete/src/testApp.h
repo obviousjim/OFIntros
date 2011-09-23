@@ -49,5 +49,11 @@ class testApp : public ofBaseApp{
 
         //Bonus stage material
 		vector<string>      messages;   //vector containing the received messages for display
-		unsigned int                 maxmessages;//nr of messages fitting on the screen
+		unsigned int        maxmessages;//nr of messages fitting on the screen
+
+		vector<string>      knownhosts; //collected IP's of chat participants
+		ofxOscSender        sender;
+		void broadcastReceivedMessage(ofxOscMessage m); //Distribute a received message among the known hosts
+
+
 };
