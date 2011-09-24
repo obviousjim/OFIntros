@@ -62,7 +62,7 @@ void testApp::update(){
                     messages.push_back(m.getArgAsString(0));
 
                     //Broadcast message to other chat participants
-                    broadcastReceivedMessage(m);
+                    broadcastReceivedMessage(m.getArgAsString(0));
 				}
 
 			}
@@ -170,7 +170,12 @@ string testApp::getOscMsgAsString(ofxOscMessage m){
 }
 
 //Bonus stage material
-void testApp::broadcastReceivedMessage(ofxOscMessage m){
+void testApp::broadcastReceivedMessage(string chatmessage){
+
+    //create a new OSC message
+    ofxOscMessage m;
+    m.setAddress("/chatlog");
+    m.addStringArg(chatmessage);
 
     //Send message to all known hosts
     // use another port for now to avoid localhost loop
@@ -178,6 +183,6 @@ void testApp::broadcastReceivedMessage(ofxOscMessage m){
             sender.setup(knownhosts[i],port+1);
             m.setRemoteEndpoint(knownhosts[i],port+1);
             sender.sendMessage(m);
-//            ofLogVerbose("Broadcast message "+m.getArgAsString(0)+" to " + m.getRemoteIp()+":"+ofToString(m.getRemotePort()));
+            ofLogVerbose("Broadcast message "+m.getArgAsString(0)+" to " + m.getRemoteIp()+":"+ofToString(m.getRemotePort()));
     }
 }

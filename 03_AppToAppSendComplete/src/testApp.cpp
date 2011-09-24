@@ -54,9 +54,9 @@ void testApp::update(){
 		// get the next message
 		ofxOscMessage m;
 		receiver.getNextMessage( &m );
-
+        ofLogVerbose("got a message");
 		// check the address of the incoming message
-		if ( m.getAddress() == "/typing" )
+		if ( m.getAddress() == "/chatlog" )
 		{
 			// get the first argument (we're only sending one) as a string
 			if ( m.getNumArgs() > 0 ){
@@ -118,6 +118,13 @@ void testApp::keyPressed  (int key){
 		// clear out "typing"
 		typing = "";
 	}
+
+	    //this is purely workaround for my mysterious OSCpack bug.
+    // if there are problems, reinit the receiver
+    // must be a timing problem, though - in debug, stepping through, it works.
+    if ( key =='r' || key == 'R' ){
+        receiver.setup( recvPort );
+    }
 }
 
 //--------------------------------------------------------------

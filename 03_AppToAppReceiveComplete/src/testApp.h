@@ -57,7 +57,7 @@ class testApp : public ofBaseApp{
         //Bonus stage material
 		vector<string>      knownhosts; //collected IP's of chat participants
 		ofxOscSender        sender;
-		void broadcastReceivedMessage(ofxOscMessage m); //Distribute a received message among the known hosts
+		void broadcastReceivedMessage(string chatmessage); //Distribute a received message among the known hosts
 
 
 };
