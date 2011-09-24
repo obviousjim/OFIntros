@@ -76,6 +76,13 @@ void testApp::update(){
 			ofLogVerbose( "got weird message: " + m.getAddress() );
 		}
 	}
+
+    //this is purely workaround for a mysterious OSCpack bug on 64bit linux
+    // after startup, reinit the receiver
+    // must be a timing problem, though - in debug, stepping through, it works.
+	if ( ofGetFrameNum() == 60 ){
+        receiver.setup(port);
+	}
 }
 
 //--------------------------------------------------------------
@@ -99,12 +106,7 @@ void testApp::draw(){
 
 //--------------------------------------------------------------
 void testApp::keyPressed  (int key){
-    //this is purely workaround for my mysterious OSCpack bug.
-    // if there are problems, reinit the receiver
-    // must be a timing problem, though - in debug, stepping through, it works.
-    if ( key =='r' || key == 'R' ){
-        receiver.setup( port );
-    }
+
 }
 
 //--------------------------------------------------------------

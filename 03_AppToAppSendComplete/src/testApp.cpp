@@ -21,7 +21,8 @@ void testApp::setup(){
 				- this is arbitrary, but MUST match the port of the reciever application
 	*/
 
-	host	= "localhost";
+//	host	= "localhost";
+	host	= "192.168.0.115";
 	port	= 9000;
 
 	sender.setup( host, port );
@@ -66,6 +67,14 @@ void testApp::update(){
 				}
 			}
 		}
+	}
+
+
+    //this is purely workaround for a mysterious OSCpack bug on 64bit linux
+    // after startup, reinit the receiver
+    // must be a timing problem, though - in debug, stepping through, it works.
+	if ( ofGetFrameNum() == 60 ){
+        receiver.setup(recvPort);
 	}
 
 }
@@ -119,12 +128,6 @@ void testApp::keyPressed  (int key){
 		typing = "";
 	}
 
-	    //this is purely workaround for my mysterious OSCpack bug.
-    // if there are problems, reinit the receiver
-    // must be a timing problem, though - in debug, stepping through, it works.
-    if ( key =='r' || key == 'R' ){
-        receiver.setup( recvPort );
-    }
 }
 
 //--------------------------------------------------------------
