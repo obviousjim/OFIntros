@@ -41,8 +41,23 @@ class testApp : public ofBaseApp{
 		// AppToAppReceiving methods
 
 		ofTrueTypeFont		font;		// font to draw incoming messages
+		ofTrueTypeFont      titleFont;  // font for some info in the title line
 		ofxOscReceiver		receiver;	// OSC receiver
 		int					port;		// port we're listening on: must match port from sender!
 
 		string				typing;		//typing you've received from another app
+
+        // Cleaner message display variables
+		vector<string>      messages;   //vector containing the received messages for display
+		unsigned int        maxmessages;//nr of messages fitting on the screen
+
+		//		Parse an OscMessage into a string for easy logging
+		string getOscMsgAsString(ofxOscMessage m);
+
+        //Bonus stage material
+		vector<string>      knownhosts; //collected IP's of chat participants
+		ofxOscSender        sender;
+		void broadcastReceivedMessage(string chatmessage); //Distribute a received message among the known hosts
+
+
 };
