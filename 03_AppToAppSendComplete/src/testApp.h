@@ -63,7 +63,7 @@ class testApp : public ofBaseApp{
 
 		//Bonus Stage material:
         ofxOscReceiver		receiver;	// OSC receiver
-        int                 recvPort;   // where we listen for messages
-        string              messages;   //vector containing the received messages for display
+        int                 recvPort;   // port where we listen for messages
+        string              messages;   // string containing the received messages for display
 };
 

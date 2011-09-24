@@ -82,8 +82,8 @@ void testApp::update(){
 void testApp::draw(){
 
     //Display some information
-    string title = "Listening for OSC messages on port " + ofToString( port ) + "\nKnown hosts: " + ofToString(knownhosts.size());
-    titleFont.drawString(title, 20, 35);
+    string title = "Listening for OSC messages on\naaa.bbb.ccc.ddd:" + ofToString( port ) + ". Known chatters: " + ofToString(knownhosts.size());
+    titleFont.drawString(title, 20, 37);
 
     //reimplemented message display:
     typing="";
